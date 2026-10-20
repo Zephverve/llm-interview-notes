@@ -89,11 +89,13 @@ markdown_extensions:
 
 extra_css:
   - assets/extra.css
+  - assets/quiz.css
 
 extra_javascript:
   - assets/mathjax-config.js
   - assets/mathjax/es5/tex-chtml.js
   - assets/extra.js
+  - assets/quiz.js
 
 validation:
   nav:
@@ -111,6 +113,7 @@ exclude_docs: |
 
 nav:
   - "首页": "index.md"
+  - "背题库": "背题库.md"
   - "面试准备": "00-面试准备指南.md"
   - "01 基础理论":
       - "Transformer 与注意力": "01-基础理论/01-Transformer与注意力机制.md"

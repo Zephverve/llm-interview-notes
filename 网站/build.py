@@ -17,11 +17,14 @@ import sys
 import threading
 from pathlib import Path
 
+from build_quiz import build_quiz
+
 WEBSITE = Path(__file__).resolve().parent
 CONTENT = WEBSITE.parent
 DOCS = WEBSITE / "docs"
 ASSETS = WEBSITE / "assets"
 INDEX_TEMPLATE = WEBSITE / "index.template.md"
+QUIZ_TEMPLATE = WEBSITE / "quiz.template.md"
 
 
 def iter_sources():
@@ -67,8 +70,18 @@ def sync(clean: bool = False) -> None:
         shutil.copy2(INDEX_TEMPLATE, index_dest)
         updated += 1
 
+    if not QUIZ_TEMPLATE.exists():
+        raise FileNotFoundError(f"缺少背题库模板：{QUIZ_TEMPLATE}")
+    quiz_dest = DOCS / "背题库.md"
+    expected.add(quiz_dest.resolve())
+    if not quiz_dest.exists() or QUIZ_TEMPLATE.read_bytes() != quiz_dest.read_bytes():
+        shutil.copy2(QUIZ_TEMPLATE, quiz_dest)
+        updated += 1
+
     if ASSETS.exists():
         shutil.copytree(ASSETS, DOCS / "assets", dirs_exist_ok=True)
+
+    build_quiz(DOCS, CONTENT)
 
     # 清理源文件已删除后遗留的页面
     for old in DOCS.rglob("*.md"):

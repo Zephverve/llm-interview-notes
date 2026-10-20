@@ -12,13 +12,15 @@ description: 2026 进阶版大模型面试资料，覆盖算法、应用开发�
 
 <div class="home-stats">
 <span>29 篇正文</span>
+<span>386 道背题库</span>
 <span>约 500 个题目 / 追问</span>
 <span>200 条术语</span>
 <span>8 类项目深挖</span>
 </div>
 
 <div class="home-actions" markdown>
-[开始刷题](06-面试题库/04-真实面经高频题.md){ .md-button .md-button--primary }
+[随机背题](背题库.md){ .md-button .md-button--primary }
+[真实面经 192 问](06-面试题库/04-真实面经高频题.md){ .md-button }
 [按岗位选路线](#route-map){ .md-button }
 </div>
 </div>
@@ -60,6 +62,7 @@ RAG、Agent、Prompt、上下文工程与评测。
 
 | 你现在要做什么 | 直接看 |
 | --- | --- |
+| 每天随机抽几道题，先想后看答案 | [进入背题库](背题库.md) |
 | 3 天后面试，先扫高频问法 | [真实面经高频题（192 问）](06-面试题库/04-真实面经高频题.md) |
 | 项目要被追问，准备答辩 | [项目深挖与追问（151 问）](06-面试题库/05-项目深挖与追问.md) |
 | 现场手写 MHA、LoRA、采样、ReAct | [手撕代码题（12 类）](06-面试题库/06-手撕代码题.md) |

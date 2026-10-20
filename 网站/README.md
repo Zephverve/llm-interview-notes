@@ -2,6 +2,10 @@
 
 这个目录把根目录的 Markdown 同步到 `docs/`，再用 MkDocs Material 生成静态站点。
 
+线上地址：<https://zephverve.github.io/llm-interview-notes/>
+
+背题库采用纯静态方案：`build_quiz.py` 在构建时解析 `06-面试题库/`，把问题和答案预渲染成 `docs/assets/quiz-data.json`；浏览器端只负责按日期种子抽题、展开答案和调用 MathJax 排版，不需要后端。
+
 ## 本地预览
 
 ```powershell
@@ -26,8 +30,12 @@ python 网站/build.py
 | --- | --- |
 | `网站/mkdocs.yml` | 站点配置、导航、主题、Markdown 扩展 |
 | `网站/index.template.md` | 首页模板，引用根目录 `README.md` |
+| `网站/quiz.template.md` | 背题库页面模板，构建时映射为 `docs/背题库.md` |
+| `网站/build_quiz.py` | 解析题库并生成 `docs/assets/quiz-data.json` |
+| `网站/assets/quiz.js` | 每日随机抽题、分类筛选、答案展开 |
+| `网站/assets/quiz.css` | 背题库页面与手机端样式 |
 | `网站/assets/` | 样式、脚本、Logo、本地 MathJax |
-| `网站/build.py` | 同步内容并调用 MkDocs |
+| `网站/build.py` | 同步内容、生成题库并调用 MkDocs |
 | `网站/docs/` | 自动生成的 MkDocs 源目录，不要手改 |
 | `网站/site/` | 自动生成的静态站点，不要手改 |
 
@@ -61,5 +69,6 @@ python 网站/build.py
 
 - 主题响应式布局，手机端导航为抽屉式。
 - 表格、代码块、行内公式和独立公式可横向滚动。
+- 背题库在 390×844 视口下无页面级横向溢出；题目控件、答案展开、表格和代码块均可用。
 - MathJax 使用本地文件，不依赖 Google Fonts 或境外 CDN。
 - 中文搜索基于 MkDocs Material 的 `zh` 分词配置。
