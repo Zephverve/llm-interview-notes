@@ -1,0 +1,8 @@
+网站/docs/
+网站/site/
+网站/.cache/
+__pycache__/
+*.pyc
+.venv/
+.DS_Store
+Thumbs.db

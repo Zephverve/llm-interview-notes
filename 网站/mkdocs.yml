@@ -1,0 +1,157 @@
+site_name: 大模型面试资料
+site_description: 2026 进阶版大模型面试资料，覆盖算法、应用开发、产品与解决方案三条路线。
+site_author: 大模型面试资料
+site_url: https://zephverve.github.io/llm-interview-notes/
+copyright: © 2026 大模型面试资料 · 题目来自公开面经，答案原创整理
+
+docs_dir: docs
+site_dir: site
+use_directory_urls: true
+
+theme:
+  name: material
+  language: zh
+  logo: assets/logo.svg
+  favicon: assets/favicon.svg
+  font: false
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: teal
+      toggle:
+        icon: material/weather-night
+        name: 切换到深色模式
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: teal
+      toggle:
+        icon: material/weather-sunny
+        name: 切换到浅色模式
+  features:
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tracking
+    - navigation.top
+    - navigation.footer
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.tabs.link
+    - toc.follow
+  icon:
+    logo: material/book-open-page-variant
+    menu: material/menu
+    search: material/magnify
+    share: material/share-variant
+    close: material/close
+    top: material/arrow-up
+
+plugins:
+  - search:
+      lang:
+        - zh
+        - en
+      separator: '[\s\u200b\-、，。；：！？（）【】《》“”‘’]+'
+
+markdown_extensions:
+  - pymdownx.snippets:
+      base_path:
+        - docs
+      check_paths: true
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+      permalink_title: 复制此标题链接
+      toc_depth: 3
+      title: 本页目录
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+extra_css:
+  - assets/extra.css
+
+extra_javascript:
+  - assets/mathjax-config.js
+  - assets/mathjax/es5/tex-chtml.js
+  - assets/extra.js
+
+validation:
+  nav:
+    omitted_files: warn
+    not_found: warn
+    absolute_links: warn
+  links:
+    not_found: warn
+    anchors: warn
+    absolute_links: relative_to_docs
+    unrecognized_links: warn
+
+exclude_docs: |
+  _snippets/**
+
+nav:
+  - "首页": "index.md"
+  - "面试准备": "00-面试准备指南.md"
+  - "01 基础理论":
+      - "Transformer 与注意力": "01-基础理论/01-Transformer与注意力机制.md"
+      - "语言模型与训练目标": "01-基础理论/02-语言模型与训练目标.md"
+      - "位置编码、归一化与激活函数": "01-基础理论/03-位置编码-归一化与激活函数.md"
+      - "架构演进与 MoE": "01-基础理论/04-架构演进与MoE.md"
+  - "02 训练与微调":
+      - "数据与 Tokenizer": "02-训练与微调/01-数据与Tokenizer.md"
+      - "分布式训练与显存优化": "02-训练与微调/02-分布式训练与显存优化.md"
+      - "SFT 与参数高效微调": "02-训练与微调/03-SFT与参数高效微调.md"
+      - "对齐：RLHF、DPO、GRPO": "02-训练与微调/04-对齐-RLHF-DPO-GRPO.md"
+  - "03 推理与部署":
+      - "推理优化与 KV Cache": "03-推理与部署/01-推理优化与KV-Cache.md"
+      - "量化、蒸馏与剪枝": "03-推理与部署/02-量化-蒸馏-剪枝.md"
+      - "推理框架与工程化": "03-推理与部署/03-推理框架与工程化.md"
+  - "04 应用开发":
+      - "RAG 系统设计": "04-应用开发/01-RAG系统设计.md"
+      - "Agent 与工具调用": "04-应用开发/02-Agent与工具调用.md"
+      - "Prompt 工程与评估": "04-应用开发/03-Prompt工程与评估.md"
+  - "05 产品与落地":
+      - "场景选型与落地方案": "05-产品与落地/01-场景选型与落地方案.md"
+  - "06 面试题库":
+      - "算法岗 85 题": "06-面试题库/01-算法岗高频问答.md"
+      - "应用岗 65 题": "06-面试题库/02-应用岗高频问答.md"
+      - "系统设计 8 题": "06-面试题库/03-系统设计题.md"
+      - "真实面经 192 问": "06-面试题库/04-真实面经高频题.md"
+      - "项目深挖 151 问": "06-面试题库/05-项目深挖与追问.md"
+      - "手撕代码 12 类": "06-面试题库/06-手撕代码题.md"
+  - "07 速查":
+      - "公式与数字速查": "07-速查/01-公式与数字速查.md"
+      - "术语中英对照（200 条）": "07-速查/02-术语中英对照.md"
+  - "08 进阶专题":
+      - "对齐算法推导": "08-进阶专题/01-对齐算法推导与对比.md"
+      - "分布式与显存计算": "08-进阶专题/02-分布式训练与显存计算.md"
+      - "推理与容量规划": "08-进阶专题/03-推理系统与容量规划.md"
+      - "上下文与 Agent 工程": "08-进阶专题/04-上下文工程与Agent工程.md"
+      - "评测与实验设计": "08-进阶专题/05-评测与实验设计.md"
+
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/Zephverve/llm-interview-notes
+      name: GitHub 仓库

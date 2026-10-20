@@ -1,0 +1,433 @@
+/* =========================================================
+   大模型面试资料 · 站点样式
+   目标：中文长文可读、手机端不挤、公式/表格/代码可横向滚动
+   ========================================================= */
+
+:root {
+  --home-hero-bg: linear-gradient(135deg, #eef2ff 0%, #f5f3ff 48%, #ecfeff 100%);
+  --home-card-bg: #ffffff;
+  --home-card-border: rgba(79, 70, 229, 0.14);
+  --home-card-shadow: 0 10px 28px rgba(30, 41, 59, 0.07);
+  --home-card-hover: rgba(79, 70, 229, 0.28);
+  --home-stat-bg: rgba(255, 255, 255, 0.62);
+  --home-stat-border: rgba(79, 70, 229, 0.14);
+  --home-muted: #5b6475;
+}
+
+[data-md-color-scheme="slate"] {
+  --home-hero-bg: linear-gradient(135deg, #111827 0%, #1e1b4b 52%, #0f172a 100%);
+  --home-card-bg: rgba(30, 41, 59, 0.58);
+  --home-card-border: rgba(129, 140, 248, 0.18);
+  --home-card-shadow: 0 10px 28px rgba(0, 0, 0, 0.24);
+  --home-card-hover: rgba(129, 140, 248, 0.42);
+  --home-stat-bg: rgba(15, 23, 42, 0.42);
+  --home-stat-border: rgba(129, 140, 248, 0.2);
+  --home-muted: #aab4c5;
+}
+
+/* ---------- 字体：不依赖 Google Fonts，国内外都能正常显示 ---------- */
+
+body,
+.md-typeset {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC",
+    "Source Han Sans SC", sans-serif;
+}
+
+.md-typeset code,
+.md-typeset pre,
+.md-typeset kbd {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo,
+    "Cascadia Code", monospace;
+}
+
+/* ---------- 正文排版 ---------- */
+
+.md-typeset {
+  font-size: 0.84rem;
+  line-height: 1.78;
+}
+
+.md-typeset h1 {
+  margin-bottom: 0.8em;
+  color: var(--md-default-fg-color);
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.md-typeset h2 {
+  margin-top: 2.4em;
+  padding-bottom: 0.35em;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.md-typeset h3 {
+  margin-top: 1.8em;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.md-typeset h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.md-typeset h1[id],
+.md-typeset h2[id],
+.md-typeset h3[id],
+.md-typeset h4[id] {
+  scroll-margin-top: 3.8rem;
+}
+
+.md-typeset a {
+  overflow-wrap: anywhere;
+  text-underline-offset: 0.15em;
+  text-decoration-thickness: 0.05em;
+}
+
+.md-typeset p,
+.md-typeset li {
+  overflow-wrap: break-word;
+}
+
+.md-typeset hr {
+  margin: 2.2em 0;
+}
+
+/* ---------- 首页 Hero ---------- */
+
+.home-hero {
+  position: relative;
+  overflow: hidden;
+  margin: 0 0 1.6rem;
+  padding: 2.2rem 2rem 1.9rem;
+  border: 1px solid var(--home-card-border);
+  border-radius: 1.1rem;
+  background: var(--home-hero-bg);
+}
+
+.home-hero::after {
+  position: absolute;
+  top: -8rem;
+  right: -5rem;
+  width: 20rem;
+  height: 20rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.26), transparent 68%);
+  content: "";
+  pointer-events: none;
+}
+
+.home-hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+.home-hero .home-kicker {
+  display: inline-block;
+  margin-bottom: 0.65rem;
+  color: var(--md-primary-fg-color);
+  font-size: 0.67rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.md-typeset .home-hero h1 {
+  margin: 0 0 0.55rem;
+  font-size: 2.15rem;
+  line-height: 1.25;
+}
+
+.home-hero .home-lead {
+  max-width: 46rem;
+  margin: 0;
+  color: var(--md-default-fg-color--light);
+  font-size: 0.92rem;
+  line-height: 1.8;
+}
+
+.home-hero .home-lead strong {
+  color: var(--md-default-fg-color);
+}
+
+.home-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 1.05rem;
+}
+
+.home-stats span {
+  padding: 0.28rem 0.6rem;
+  border: 1px solid var(--home-stat-border);
+  border-radius: 999px;
+  background: var(--home-stat-bg);
+  color: var(--md-default-fg-color--light);
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.home-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 1.15rem;
+}
+
+.home-actions .md-button {
+  margin: 0;
+}
+
+/* ---------- 路线卡片 ---------- */
+
+.route-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 1.1rem 0 2rem;
+}
+
+.route-card {
+  padding: 1rem 1.05rem;
+  border: 1px solid var(--home-card-border);
+  border-radius: 0.85rem;
+  background: var(--home-card-bg);
+  box-shadow: var(--home-card-shadow);
+  transition: transform 160ms ease, border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.route-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--home-card-hover);
+  box-shadow: 0 14px 34px rgba(30, 41, 59, 0.12);
+}
+
+.md-typeset .route-card h3 {
+  margin: 0 0 0.35rem;
+  font-size: 0.98rem;
+}
+
+.md-typeset .route-card p {
+  margin: 0 0 0.65rem;
+  color: var(--home-muted);
+  font-size: 0.76rem;
+  line-height: 1.65;
+}
+
+.md-typeset .route-card a {
+  font-size: 0.77rem;
+  font-weight: 700;
+}
+
+.route-card .headerlink {
+  display: none;
+}
+
+/* ---------- 表格 ---------- */
+
+.md-typeset table:not([class]) {
+  font-size: 0.76rem;
+}
+
+.md-typeset table:not([class]) th {
+  background-color: var(--md-default-fg-color--lightest);
+  font-weight: 700;
+}
+
+.md-typeset table:not([class]) td,
+.md-typeset table:not([class]) th {
+  padding: 0.48em 0.65em;
+  vertical-align: top;
+}
+
+.md-typeset table:not([class]) code {
+  word-break: break-word;
+}
+
+/* ---------- 代码 ---------- */
+
+.md-typeset pre > code {
+  font-size: 0.76rem;
+  line-height: 1.6;
+}
+
+.md-typeset .highlight {
+  border-radius: 0.45rem;
+}
+
+.md-typeset code {
+  font-size: 0.84em;
+}
+
+/* ---------- 公式：手机端可横向滚动 ---------- */
+
+.md-typeset .arithmatex {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--md-default-fg-color--lighter) transparent;
+}
+
+.md-typeset mjx-container[jax="CHTML"][display="true"] {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.2rem 0;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--md-default-fg-color--lighter) transparent;
+}
+
+.md-typeset .arithmatex::-webkit-scrollbar,
+.md-typeset mjx-container[jax="CHTML"][display="true"]::-webkit-scrollbar {
+  height: 5px;
+}
+
+.md-typeset .arithmatex::-webkit-scrollbar-thumb,
+.md-typeset mjx-container[jax="CHTML"][display="true"]::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: var(--md-default-fg-color--lighter);
+}
+
+.md-typeset .md-code__content {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--md-default-fg-color--lighter) transparent;
+}
+
+/* ---------- 导航与搜索 ---------- */
+
+.md-header__title {
+  font-weight: 700;
+}
+
+.md-search__form {
+  border-radius: 0.45rem;
+}
+
+.md-nav__title {
+  font-weight: 700;
+}
+
+.md-nav--secondary .md-nav__title {
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+}
+
+.md-typeset .md-button {
+  border-radius: 0.45rem;
+  font-weight: 600;
+}
+
+/* ---------- 平板与手机 ---------- */
+
+@media screen and (max-width: 76.1875em) {
+  .route-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media screen and (max-width: 44.9375em) {
+  .md-typeset {
+    font-size: 0.9rem;
+    line-height: 1.8;
+  }
+
+  .md-typeset h1 {
+    font-size: 1.55rem;
+  }
+
+  .md-typeset h2 {
+    margin-top: 2em;
+    font-size: 1.18rem;
+  }
+
+  .md-typeset h3 {
+    font-size: 1rem;
+  }
+
+  .md-content__inner {
+    padding: 0.9rem 0.85rem 2rem;
+  }
+
+  .home-hero {
+    padding: 1.35rem 1rem 1.2rem;
+    border-radius: 0.85rem;
+  }
+
+  .md-typeset .home-hero h1 {
+    font-size: 1.7rem;
+  }
+
+  .home-hero .home-kicker {
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+  }
+
+  .home-hero .home-lead {
+    font-size: 0.86rem;
+  }
+
+  .route-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .home-actions .md-button {
+    text-align: center;
+  }
+
+  .md-typeset pre > code {
+    font-size: 0.71rem;
+  }
+
+  .md-typeset table:not([class]) {
+    min-width: 420px;
+    font-size: 0.72rem;
+  }
+
+  .md-typeset table:not([class]):has(thead th:nth-child(3)) {
+    min-width: 500px;
+  }
+
+  .md-typeset__scrollwrap {
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+}
+
+.table-scroll-hint {
+  display: none;
+}
+
+@media screen and (max-width: 44.9375em) {
+  .table-scroll-hint {
+    display: block;
+    margin: 0.2rem 0 0.35rem;
+    color: var(--md-default-fg-color--light);
+    font-size: 0.68rem;
+    text-align: right;
+  }
+}
+
+/* ---------- 打印 ---------- */
+
+@media print {
+  .home-hero,
+  .route-grid,
+  .home-actions {
+    display: none;
+  }
+}
